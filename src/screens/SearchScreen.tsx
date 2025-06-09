@@ -1,5 +1,7 @@
 // src/screens/SearchScreen.tsx
 import React, { useState, useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
+
 import {
   View,
   TextInput,
