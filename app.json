@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.yourcompany.gymtracker"
@@ -26,6 +28,9 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "scheme": "gymtracker"
+    "scheme": "gymtracker",
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }
