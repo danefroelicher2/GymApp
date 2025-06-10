@@ -1,40 +1,47 @@
 // src/navigation/AppNavigator.tsx
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Ionicons } from "@expo/vector-icons";
 
-import { useAuth } from '../contexts/AuthContext';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useAuth } from "../contexts/AuthContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 // Import screens
-import AuthScreen from '../screens/AuthScreen';
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import SearchScreen from '../screens/SearchScreen';
-import WorkoutsScreen from '../screens/WorkoutsScreen';
-import FollowingScreen from '../screens/FollowingScreen';
-import UserProfileScreen from '../screens/UserProfileScreen';
+import AuthScreen from "../screens/AuthScreen";
+import HomeScreen from "../screens/HomeScreen";
+import ProfileScreen from "../screens/ProfileScreen";
+import SearchScreen from "../screens/SearchScreen";
+import WorkoutsScreen from "../screens/WorkoutsScreen";
+import FollowingScreen from "../screens/FollowingScreen";
+import UserProfileScreen from "../screens/UserProfileScreen";
+
+// Define navigation param types
+export type RootStackParamList = {
+  ProfileMain: undefined;
+  UserProfile: { userId: string; username?: string };
+  SearchMain: undefined;
+};
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 // Stack navigator for profile-related screens
 function ProfileStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name="ProfileMain" 
-        component={ProfileScreen} 
+      <Stack.Screen
+        name="ProfileMain"
+        component={ProfileScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen 
-        name="UserProfile" 
+      <Stack.Screen
+        name="UserProfile"
         component={UserProfileScreen}
-        options={({ route }: any) => ({ 
-          title: route.params?.username || 'User Profile',
-          headerBackTitle: 'Back'
+        options={({ route }) => ({
+          title: route.params?.username || "User Profile",
+          headerBackTitle: "Back",
         })}
       />
     </Stack.Navigator>
@@ -45,17 +52,17 @@ function ProfileStack() {
 function SearchStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name="SearchMain" 
-        component={SearchScreen} 
+      <Stack.Screen
+        name="SearchMain"
+        component={SearchScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen 
-        name="UserProfile" 
+      <Stack.Screen
+        name="UserProfile"
         component={UserProfileScreen}
-        options={({ route }: any) => ({ 
-          title: route.params?.username || 'User Profile',
-          headerBackTitle: 'Back'
+        options={({ route }) => ({
+          title: route.params?.username || "User Profile",
+          headerBackTitle: "Back",
         })}
       />
     </Stack.Navigator>
@@ -70,84 +77,84 @@ function MainTabs() {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName: keyof typeof Ionicons.glyphMap;
 
-          if (route.name === 'Home') {
-            iconName = focused ? 'home' : 'home-outline';
-          } else if (route.name === 'Following') {
-            iconName = focused ? 'people' : 'people-outline';
-          } else if (route.name === 'Workouts') {
-            iconName = focused ? 'barbell' : 'barbell-outline';
-          } else if (route.name === 'Search') {
-            iconName = focused ? 'search' : 'search-outline';
-          } else if (route.name === 'Profile') {
-            iconName = focused ? 'person' : 'person-outline';
+          if (route.name === "Home") {
+            iconName = focused ? "home" : "home-outline";
+          } else if (route.name === "Following") {
+            iconName = focused ? "people" : "people-outline";
+          } else if (route.name === "Workouts") {
+            iconName = focused ? "barbell" : "barbell-outline";
+          } else if (route.name === "Search") {
+            iconName = focused ? "search" : "search-outline";
+          } else if (route.name === "Profile") {
+            iconName = focused ? "person" : "person-outline";
           } else {
-            iconName = 'ellipse-outline';
+            iconName = "ellipse-outline";
           }
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-        tabBarActiveTintColor: '#007AFF',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: "#007AFF",
+        tabBarInactiveTintColor: "gray",
         tabBarStyle: {
           paddingBottom: 5,
           paddingTop: 5,
           height: 60,
         },
         headerStyle: {
-          backgroundColor: '#007AFF',
+          backgroundColor: "#007AFF",
         },
-        headerTintColor: '#fff',
+        headerTintColor: "#fff",
         headerTitleStyle: {
-          fontWeight: 'bold',
+          fontWeight: "bold",
         },
       })}
     >
-      <Tab.Screen 
-        name="Home" 
+      <Tab.Screen
+        name="Home"
         component={HomeScreen}
         options={{
-          title: '🏋️ GymTracker',
+          title: "🏋️ GymTracker",
           headerStyle: {
-            backgroundColor: '#007AFF',
+            backgroundColor: "#007AFF",
           },
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         }}
       />
-      <Tab.Screen 
-        name="Following" 
+      <Tab.Screen
+        name="Following"
         component={FollowingScreen}
         options={{
-          title: 'Following',
+          title: "Following",
           headerStyle: {
-            backgroundColor: '#007AFF',
+            backgroundColor: "#007AFF",
           },
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         }}
       />
-      <Tab.Screen 
-        name="Workouts" 
+      <Tab.Screen
+        name="Workouts"
         component={WorkoutsScreen}
         options={{
-          title: 'My Workouts',
+          title: "My Workouts",
           headerStyle: {
-            backgroundColor: '#007AFF',
+            backgroundColor: "#007AFF",
           },
-          headerTintColor: '#fff',
+          headerTintColor: "#fff",
         }}
       />
-      <Tab.Screen 
-        name="Search" 
+      <Tab.Screen
+        name="Search"
         component={SearchStack}
         options={{
-          title: 'Search',
+          title: "Search",
           headerShown: false,
         }}
       />
-      <Tab.Screen 
-        name="Profile" 
+      <Tab.Screen
+        name="Profile"
         component={ProfileStack}
         options={{
-          title: 'Profile',
+          title: "Profile",
           headerShown: false,
         }}
       />

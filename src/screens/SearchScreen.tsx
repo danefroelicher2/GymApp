@@ -59,7 +59,7 @@ export default function SearchScreen({ navigation }: any) {
       }
 
       // Filter out current user from results
-      const filteredResults = (data || []).filter(profile => profile.id !== user?.id);
+      const filteredResults = (data || []).filter((profile: any) => profile.id !== user?.id) as Profile[];
       setResults(filteredResults);
     } catch (error) {
       console.error('Search error:', error);
@@ -83,9 +83,9 @@ export default function SearchScreen({ navigation }: any) {
 
       // Filter out current user and shuffle for variety
       const filteredUsers = (data || [])
-        .filter(profile => profile.id !== user?.id)
+        .filter((profile: any) => profile.id !== user?.id)
         .sort(() => 0.5 - Math.random())
-        .slice(0, 6);
+        .slice(0, 6) as Profile[];
       
       setSuggestedUsers(filteredUsers);
     } catch (error) {
@@ -200,7 +200,7 @@ export default function SearchScreen({ navigation }: any) {
           // Show suggested users when not searching
           renderSuggestedSection()
         )}
-      </div>
+      </View>
     </SafeAreaView>
   );
 }
