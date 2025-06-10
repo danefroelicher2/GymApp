@@ -61,7 +61,7 @@ export default function UserProfileScreen({ route }: UserProfileScreenProps) {
       setProfile(profileResult.data);
       setFollowersCount(followersResult.count);
       setFollowingCount(followingResult.count);
-      setWorkouts((workoutsResult.data?.filter((w: any) => w.is_public) || []) as Workout[]);
+      setWorkouts((workoutsResult.data || []).filter((w: any) => w.is_public) as unknown as Workout[]);
 
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -80,7 +80,7 @@ export default function UserProfileScreen({ route }: UserProfileScreenProps) {
       }
       // Refresh workouts to show updated like count
       const { data } = await workoutService.getUserWorkouts(userId);
-      setWorkouts((data?.filter((w: any) => w.is_public) || []) as Workout[]);
+      setWorkouts((data || []).filter((w: any) => w.is_public) as unknown as Workout[]);
     } catch (error) {
       console.error('Error toggling like:', error);
       Alert.alert('Error', 'Failed to update like');
