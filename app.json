@@ -4,10 +4,10 @@
     "slug": "gym-tracker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/48x48.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/1284x2778.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,13 +18,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/1284x2778.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.yourcompany.gymtracker"
     },
     "web": {
-      "favicon": "./assets/48x48.png"
+      "favicon": "./assets/favicon.png"
     },
     "scheme": "gymtracker",
     "plugins": ["expo-secure-store"]
