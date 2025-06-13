@@ -1,3 +1,6 @@
 {
-  "urlRandomness": "yLBu2Oo"
+  "urlRandomness": "yLBu2Oo",
+  "dev": true,
+  "minify": false,
+  "https": false
 }
