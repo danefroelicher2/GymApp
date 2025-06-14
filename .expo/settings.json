@@ -2,5 +2,9 @@
   "urlRandomness": "yLBu2Oo",
   "dev": true,
   "minify": false,
-  "https": false
+  "https": false,
+  "scheme": "exp+gym-tracker",
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "devClient": false
 }
